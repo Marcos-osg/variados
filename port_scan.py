@@ -6,11 +6,10 @@ def port_scanner(ip):
         for i in range(1, 65535):
             scan = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             if scan.connect_ex((ip, i)) == 0:
-                scan.connect((ip,i))
-                message = scan.recv(1024)
-                print(f"[+] Porta: {i} => [ABERTA] -- {message}")
+                print(f"[+] Porta: {i} => [ABERTA]")
                 scan.close()
-    except Exception:
+    except Exception as e:
+        print(str(e))
         print("Ocorreu um erro durante a execução do programa.")
         
         
